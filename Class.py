@@ -5,49 +5,20 @@ class Complex(object):
         self.imaginary = imaginary
         
     def __add__(self, no):
-        r1 = self.real
-        i1 = self.imaginary
-        r2 = no.real
-        i2 = no.imaginary
-        resultR = r1 + r2
-        resultI = i1 + i2
-        result = Complex(resultR,resultI)
-        return result
+        return Complex(self.real + no.real,self.imaginary + no.imaginary)
         
     def __sub__(self, no):
-        r1 = self.real
-        i1 = self.imaginary
-        r2 = no.real
-        i2 = no.imaginary
-        resultR = r1 - r2
-        resultI = i1 - i2
-        result = Complex(resultR,resultI)
-        return result
+        return Complex(self.real-no.real, self.imaginary-no.imaginary)
         
     def __mul__(self, no):
-        r1 = self.real
-        i1 = self.imaginary
-        r2 = no.real
-        i2 = no.imaginary
-        resultR = r1*r2 + (-1)*i1*i2
-        resultI = r1*i2 + i1*r2
-        result = Complex(resultR,resultI)
-        return result
+        return Complex(self.real*no.real - self.imaginary*no.imaginary, self.real*no.imaginary + self.imaginary*no.real)
 
     def __truediv__(self, no):
-        r1 = self.real
-        i1 = self.imaginary
-        r2 = no.real
-        i2 = no.imaginary
-        resultR = float(float(r1*r2+i1*i2)/float(r2*r2+i2*i2))
-        resultI = float(float((-1)*r1*i2 + i1*r2)/float(r2*r2 + i2*i2))
-        result = Complex(resultR,resultI)
-        return result
+        return Complex(float(float(self.real*no.real+self.imaginary*no.imaginary)/float(no.real**2+no.imaginary**2)),float(float((-1)*self.real*no.imaginary + self.imaginary*no.real)/float(no.real**2 + no.imaginary**2)))
+        
 
     def mod(self):
-        r1 = self.real
-        i1 = self.imaginary
-        sqr = math.sqrt(r1*r1 + i1*i1)
+        sqr = math.sqrt(self.real**2 + self.imaginary**2)
         result = Complex(sqr,0)
         return result
 
